@@ -77,7 +77,7 @@ if uploaded_file is not None:
         fig, ax = plt.subplots()
         a=data['MSRP'].unique()
         b=data['Invoice'].unique()
-        sns.scatterplot(data=data, x=a, y=b, ax=ax)
+        sns.scatterplot(data=data, x='a', y='b', ax=ax)
         ax.set_xlabel("MSRP")
         ax.set_ylabel("Invoice")
         # Display scatterplot
