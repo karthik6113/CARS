@@ -65,9 +65,6 @@ if uploaded_file is not None:
         if st.checkbox("SHOW ALL THE RECORDS ARE ORIGIN IN EUROPE OR ASIA"):
           st.write(data[data['Origin'].isin(['Asia', 'Europe'])])
           st.write(data['Origin'].value_counts())
-    if st.checkbox("INCREASE MPG_CITY OF ALL MODELS WITH 3 THAT HAVE HORSE POWER MORE THAN 200"):
-      data[data['Horsepower']>200]
-      st.write(data['MPG_City'] = data['MPG_City'].apply(lambda x:x+3))
     if st.checkbox("SHOW DATA VISULIAZATIONS "):
       if st.checkbox("HISTOGRAM THAT SHOWS COUNT OF DIFFERENT MAKES "):
         fig, ax = plt.subplots()
