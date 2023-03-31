@@ -75,8 +75,8 @@ if uploaded_file is not None:
         st.pyplot(fig)
       if st.checkbox("SCATTER PLOT"):
         fig, ax = plt.subplots()
-        sns.scatterplot(data=data, x="MPG_CITY", y="MPG_HIGHWAY", ax=ax)
-        ax.set_xlabel("MPG_CITY")
-        ax.set_ylabel("MPG_HIGHWAY")
+        sns.scatterplot(data=data, x="MSRP", y="Invoice", ax=ax)
+        ax.set_xlabel("MSRP")
+        ax.set_ylabel("Invoice")
         # Display scatterplot
         st.pyplot(fig)
