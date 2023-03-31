@@ -75,7 +75,9 @@ if uploaded_file is not None:
         st.pyplot(fig)
       if st.checkbox("SCATTER PLOT"):
         fig, ax = plt.subplots()
-        sns.scatterplot(data=data, x="MSRP.unique()", y="Invoice.unique()", ax=ax)
+        a=data['MSRP'].unique()
+        b=data['Invoice'].unique()
+        sns.scatterplot(data=data, x=a, y=b, ax=ax)
         ax.set_xlabel("MSRP")
         ax.set_ylabel("Invoice")
         # Display scatterplot
