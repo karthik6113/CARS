@@ -33,22 +33,21 @@ if uploaded_file is not None:
     st.sidebar.title("𝚄𝙽𝙳𝙴𝚁 𝚃𝙷𝙴 𝙶𝚄𝙸𝙳𝙴𝙽𝙲𝙴 𝙾𝙵 :")
     st.sidebar.write(" 𝙳𝚁 𝙱𝙾𝙼𝙼𝙰 𝚁𝙰𝙼𝙺𝚁𝙸𝚂𝙷𝙽𝙰")
     st.title("𝙲𝙰𝚁𝚂 𝙳𝙰𝚃𝙰 𝙰𝙽𝙰𝙻𝚈𝚂𝙸𝚂")
-    if st.checkbox("𝚁𝙰𝚆 𝙳𝙰𝚃𝙰 :"):
-        st.write(data)
     if st.checkbox("RAW DATA INFO :"):
       st.write("NULL VALUES IN EACH COLUMN :")
       st.write(data.isnull().sum())
-    if st.checkbox("DATA CLEANING OR PREPROCESIONG :"):
-      data=data.dropna()
-      st.write(data)
     if st.checkbox("DATA INFO AFTER CLEANING :"):
+      data=data.dropna()
       st.write("NULL VALUES IN EACH COLUMN :")
       st.write(data.isnull().sum())      
     if st.checkbox("𝚂𝙷𝙾𝚆 𝙵𝙸𝚁𝚂𝚃 𝟸𝟻 𝚁𝙾𝚆𝚂 :"):
         st.write(data.head(25))
+    if st.checkbox("STASTICAL OBSERVATIONS ON DATASSET :"):
+        st.write(data.describe())
 
-    if st.checkbox(" 𝚂𝙷𝙾𝚆 𝚂𝙷𝙰𝙿𝙴 :"):
+    if st.checkbox(" 𝚂𝙷𝙾𝚆 𝚂𝙷𝙰𝙿𝙴 AND DIMENSIONS OF DATAFRAME :"):
         st.write("SHAPE :",data.shape)
+        st.write(" NO OF DIMENSIONS :",data.ndim)
         
     if st.checkbox("BASIC DETAILS ABOUT MANUFACTURERS :"):
         if st.checkbox("DIFFERENT TYPES OF MANUFACTURERS AND THIER COUNTS :"):
@@ -65,20 +64,58 @@ if uploaded_file is not None:
         if st.checkbox("SHOW ALL THE RECORDS ARE ORIGIN IN EUROPE OR ASIA"):
           st.write(data[data['Origin'].isin(['Asia', 'Europe'])])
           st.write(data['Origin'].value_counts())
+    if st.checkbox("SHOW CORRELATION BETWEEN MPG_CITY AND MPG_HIGHWAY :"):
+        st.write(data['MPG_City'].corr(data['MPG_Highway']))
+    if st.checkbox("SHOW SOME BASIC DETAILS OF CARS :"):
+        if st.checkbox("PRICING DETAILS OF SELECTED MODELS :"):
+            st.write("choose model and type from the below list :")
+            st.write(data['Type'].unique())
+            data["MSRP"] = data["MSRP"].replace("[$,]", "", regex=True).astype(int)
+            y=st.text_input("PLEASE ENTER MODEL TYPE:",key=" MODEL_INPUT")
+            st.write("MINIMUM VALUE IN THE SELECTED TYPE :")
+            data1 = data.where(data['Type']==y)['MSRP']
+            st.write(data1.min())
+            st.write("MAXIMUM VALUE IN THE SELECTED TYPE :")
+            data1 = data.where(data['Type']==y)['MSRP']
+            st.write(data1.max())
+            st.write("AVERAGE  VALUE IN THE SELECTED TYPE :")
+            data1 = data.where(data['Type']==y)['MSRP']
+            st.write(data1.mean())
+        if st.checkbox("SHOW CARS WITH HORSPOWER IN BETWEEN 350 TO 450 :"):
+           data1 = data[(350 <= data['Horsepower']) & (data['Horsepower'] <= 450)]
+           st.write(data1[data.columns[:3]])
+        if st.checkbox("SHOW THE CARS WITH ENGINE SIZE 3.5 AND WITH 6 CYLINDERS :"):
+            data1 = data[(data['EngineSize']== 3.5 )& (data['Cylinders']== 6)]
+            st.write(data1['Model'])
+
     if st.checkbox("SHOW DATA VISULIAZATIONS "):
-      if st.checkbox("HISTOGRAM THAT SHOWS COUNT OF DIFFERENT MAKES "):
-        fig, ax = plt.subplots()
-        sns.histplot(data=data, x="Make", ax=ax)
-        ax.set_xlabel("MAKE")
-        ax.set_ylabel("Count")
-        # Display histogram
-        st.pyplot(fig)
-      if st.checkbox("SCATTER PLOT"):
-        fig, ax = plt.subplots()
-        a=data['MSRP'].unique()
-        b=data['Invoice'].unique()
-        sns.scatterplot(data=data, x='a', y='b', ax=ax)
-        ax.set_xlabel("MSRP")
-        ax.set_ylabel("Invoice")
-        # Display scatterplot
-        st.pyplot(fig)
+        if st.checkbox("HISTOGRAM THAT SHOWS COUNT OF DIFFERENT MAKES "):
+            fig, ax = plt.subplots(figsize = (30,10))
+            sns.histplot(data=data, x="Make", ax=ax)
+            ax.set_xlabel("MAKE")
+            ax.set_ylabel("Count")
+            # Display histogram
+            st.pyplot(fig)
+        if st.checkbox("SCATTER PLOT"):
+            fig, ax = plt.subplots(figsize = (20,10))
+            sns.scatterplot(data=data, x='EngineSize',y='Horsepower', ax=ax)
+            ax.set_xlabel("MSRP")
+            ax.set_ylabel("Invoice")
+            # Display scatterplot
+            st.pyplot(fig)
+        if st.checkbox("SHOW HEATMAP OF DATA CORRELATION:"):
+            heatmap=sns.heatmap(data.iloc[:,[5,6,7,8,9,10,11,12,12]].corr())
+            st.pyplot(heatmap.figure)
+        if st.checkbox("SHOW BOX PLOT OF DATA :"):
+            fig, ax = plt.subplots(figsize=(8, 6))
+            boxplot = sns.boxplot(data=data,ax=ax)
+            st.pyplot(fig)
+        if st.checkbox("SHOW PIE CHART OF ORIGIN :"):
+            fig, ax = plt.subplots()
+            ax.pie(data['Origin'])
+            ax.axis('equal')
+            st.pyplot(fig)
+
+    
+    
+      
