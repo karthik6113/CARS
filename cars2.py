@@ -114,7 +114,8 @@ if uploaded_file is not None:
             st.pyplot(fig)
         if st.checkbox("SHOW PIE CHART OF ORIGIN :"):
             fig, ax = plt.subplots()
-            ax.pie(data['Origin'])
+            mylabels = data['Origin'].unique()
+            ax.pie(data['Origin'].count(),labels = mylabels)
             ax.axis('equal')
             st.pyplot(fig)
 
