@@ -119,6 +119,8 @@ if uploaded_file is not None:
             ax.pie(x,labels = mylabels)
             ax.axis('equal')
             st.pyplot(fig)
+     
+         
 
     
     
