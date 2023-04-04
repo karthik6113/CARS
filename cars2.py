@@ -50,6 +50,7 @@ if uploaded_file is not None:
         st.write(" NO OF DIMENSIONS :",data.ndim)
         
     if st.checkbox("BASIC DETAILS ABOUT MANUFACTURERS :"):
+        data=data.dropna()
         if st.checkbox("DIFFERENT TYPES OF MANUFACTURERS AND THIER COUNTS :"):
           st.write(data['Make'].value_counts())
 
