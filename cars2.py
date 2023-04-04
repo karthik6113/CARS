@@ -50,7 +50,6 @@ if uploaded_file is not None:
         st.write(" NO OF DIMENSIONS :",data.ndim)
         
     if st.checkbox("BASIC DETAILS ABOUT MANUFACTURERS :"):
-        data.dropna()
         if st.checkbox("DIFFERENT TYPES OF MANUFACTURERS AND THIER COUNTS :"):
           st.write(data['Make'].value_counts())
 
@@ -68,7 +67,7 @@ if uploaded_file is not None:
     if st.checkbox("SHOW CORRELATION BETWEEN MPG_CITY AND MPG_HIGHWAY :"):
         st.write(data['MPG_City'].corr(data['MPG_Highway']))
     if st.checkbox("SHOW SOME BASIC DETAILS OF CARS :"):
-         data.dropna()
+        data=data.dropna()
         if st.checkbox("PRICING DETAILS OF SELECTED MODELS :"):
             st.write("choose model and type from the below list :")
             st.write(data['Type'].unique())
