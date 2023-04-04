@@ -116,7 +116,7 @@ if uploaded_file is not None:
             fig, ax = plt.subplots()
             x=data['Origin'].values_count()
             mylabels = data['Origin'].unique()
-            ax.pie(data['Origin'].count(),labels = mylabels)
+            ax.pie(x[0],labels = mylabels)
             ax.axis('equal')
             st.pyplot(fig)
 
