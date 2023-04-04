@@ -37,9 +37,9 @@ if uploaded_file is not None:
       st.write("NULL VALUES IN EACH COLUMN :")
       st.write(data.isnull().sum())
     if st.checkbox("DATA INFO AFTER CLEANING :"):
-      data=data.dropna()
-      st.write("NULL VALUES IN EACH COLUMN :")
-      st.write(data.isnull().sum())      
+        data=data.dropna()
+        st.write("NULL VALUES IN EACH COLUMN :")
+        st.write(data.isnull().sum())      
     if st.checkbox("𝚂𝙷𝙾𝚆 𝙵𝙸𝚁𝚂𝚃 𝟸𝟻 𝚁𝙾𝚆𝚂 :"):
         st.write(data.head(25))
     if st.checkbox("STASTICAL OBSERVATIONS ON DATASSET :"):
