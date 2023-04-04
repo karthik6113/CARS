@@ -119,9 +119,6 @@ if uploaded_file is not None:
             ax.pie(x,labels = mylabels)
             ax.axis('equal')
             st.pyplot(fig)
-     
-         
-
+    x=data['Origin'].values_count()
+    st.write(x)
     
-    
-      
