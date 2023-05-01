@@ -6,7 +6,6 @@ import streamlit as st
 from PIL import Image
 logo = Image.open('logo1.png')
 logo.resize((400,400))
-logo
 #pip install pandas numpy matplotlib seaborn streamlit
 #to run strealit :   streamlit run test2.py 
 st.set_page_config(page_title=" CARS EDA", page_icon=":bar_chart:", layout="wide")
