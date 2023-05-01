@@ -120,7 +120,7 @@ if uploaded_file is not None:
             ax.set_ylabel("Invoice")
             st.pyplot(fig)
         if st.checkbox("SHOW HEATMAP OF DATA CORRELATION"):
-            heatmap=sns.heatmap(data.iloc[:,[5,6,7,8,9,10,11,12,12]].corr())
+            heatmap=sns.heatmap(data.iloc[:,[5,6,7,8,9,10,11,12]].corr())
             plt.title("HEATMAP OF DATA CORRELATION")
             st.pyplot(heatmap.figure)
         if st.checkbox("SHOW BOX PLOT OF DATA "):
