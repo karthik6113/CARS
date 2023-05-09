@@ -54,7 +54,7 @@ if uploaded_file is not None:
             st.write(data1[1:])
 
         if st.checkbox("𝙼𝙾𝙳𝙴𝙻 𝚃𝚈𝙿𝙴 𝚃𝙾 𝙲𝙷𝙴𝙲𝙺 𝚃𝙷𝙴 𝙼𝙰𝙽𝚄𝙵𝙰𝙲𝚃𝚄𝚁𝙴𝚁𝚂 :"):
-            st.write("PLEASE CHOOSE MODELS FROM THE ABOVE LIST :",data['Type'].unique())
+            st.write("PLEASE CHOOSE MODELS FROM THE BELOW LIST :",data['Type'].unique())
             x=st.text_input("PLEASE ENTER MODEL TYPE :")
             data1=data.where(data['Type']==x)['Make'].unique()
             st.write(data1[1:])
