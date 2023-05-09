@@ -153,9 +153,9 @@ if uploaded_file is not None:
         slider4=data['Horsepower'].unique()
         
         with col1:
-            value1 = st.selectbox('CLICK ON A VALUE OF HORSEPOWER ', slider1)
+            value1 = st.selectbox('CLICK ON A COMPANY', slider1)
         with col2:
-            value2 = st.selectbox('CLICK ON ANY NO OF CYLINDERS ',slider2 )
+            value2 = st.selectbox('CLICK ON TYPE ',slider2 )
         with col3:
             min_price = st.slider("Minimum Price", min_value=0.0, max_value=100000.0,step=100.0)
             max_price = st.slider("Maximum Price", min_value=0.0, max_value=100000.0, step=100.0)
