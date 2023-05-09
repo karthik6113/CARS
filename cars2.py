@@ -163,7 +163,7 @@ if uploaded_file is not None:
             value4= st.selectbox('CLICK ON ANY NO OF Horsepower ',slider4)
 
         data1 = data[(data['Make']==value1) & (data['Type']==value2)&(data[(min_price<= data['Horsepower']) & (data['MSRP'] <=max_price)])&(data['Horsepower']==value4)]
-        st.write(data1[data.iloc[[1, 2, 3], :]])
+        st.write(data1[data[['Make','Type','MSRP','Horsepower']]])
 
 
 
