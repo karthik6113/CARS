@@ -157,8 +157,8 @@ if uploaded_file is not None:
         with col2:
             value2 = st.selectbox('CLICK ON ANY NO OF CYLINDERS ',slider2 )
         with col3:
-            min_price = st.slider("Minimum Price", min_value=0.0, max_value=10000.0,step=100.0)
-            max_price = st.slider("Maximum Price", min_value=0.0, max_value=10000.0, step=100.0)
+            min_price = st.slider("Minimum Price", min_value=0.0, max_value=100000.0,step=100.0)
+            max_price = st.slider("Maximum Price", min_value=0.0, max_value=100000.0, step=100.0)
         with col4:
             value4= st.selectbox('CLICK ON ANY NO OF Horsepower ',slider4)
 
