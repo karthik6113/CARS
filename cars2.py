@@ -73,7 +73,7 @@ if uploaded_file is not None:
         if st.checkbox("PRICING DETAILS OF SELECTED MODELS :"):
             st.write("choose model and type from the below list :")
             st.write(data['Type'].unique())
-            "] = data["MSRP"].replace("[$,]", "", regex=True).astype(int)
+            data["MSRP"] = data["MSRP"].replace("[$,]", "", regex=True).astype(int)
             y=st.text_input("PLEASE ENTER MODEL TYPE:",key=" MODEL_INPUT")
             st.write("MINIMUM VALUE IN THE SELECTED TYPE :")
             data1 = data.where(data['Type']==y)['MSRP']
