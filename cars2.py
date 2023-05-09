@@ -148,22 +148,22 @@ if uploaded_file is not None:
             st.pyplot(fig)
     if st.checkbox("CHECK CARS ON YOUR PERSONLIZATION"):
         col1, col2,col3,col4 = st.columns(4)
-            slider1=data['Make'].unique()
-            slider2=data['Type'].unique()
-            slider4=data['Horsepower'].unique()
+        slider1=data['Make'].unique()
+        slider2=data['Type'].unique()
+        slider4=data['Horsepower'].unique()
         
-            with col1:
-                value1 = st.selectbox('CLICK ON A VALUE OF HORSEPOWER ', slider1)
-            with col2:
-                value2 = st.selectbox('CLICK ON ANY NO OF CYLINDERS ',slider2 )
-            with col3:
-                min_price = st.slider("Minimum Price", min_value=0.0, max_value=10000.0,step=100)
-                max_price = st.slider("Maximum Price", min_value=0.0, max_value=10000.0, step=100)
-            with col4:
-                value4= st.selectbox('CLICK ON ANY NO OF Horsepower ',slider4)
+        with col1:
+            value1 = st.selectbox('CLICK ON A VALUE OF HORSEPOWER ', slider1)
+        with col2:
+            value2 = st.selectbox('CLICK ON ANY NO OF CYLINDERS ',slider2 )
+        with col3:
+            min_price = st.slider("Minimum Price", min_value=0.0, max_value=10000.0,step=100)
+            max_price = st.slider("Maximum Price", min_value=0.0, max_value=10000.0, step=100)
+        with col4:
+            value4= st.selectbox('CLICK ON ANY NO OF Horsepower ',slider4)
 
-            data1 = data[(data['Make']==value1) & (data['Type']==value2)&(data[(min_price<= data['Horsepower']) & (data['MSRP'] <=max_price)])&(data['Horsepower']==value4)]
-            st.write(data1[data.iloc[:[0,2,5,9]]])
+        data1 = data[(data['Make']==value1) & (data['Type']==value2)&(data[(min_price<= data['Horsepower']) & (data['MSRP'] <=max_price)])&(data['Horsepower']==value4)]
+        st.write(data1[data.iloc[:[0,2,5,9]]])
 
 
 
