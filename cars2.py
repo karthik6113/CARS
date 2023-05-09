@@ -37,10 +37,10 @@ if uploaded_file is not None:
        
     if st.checkbox("𝚂𝙷𝙾𝚆 𝙵𝙸𝚁𝚂𝚃 𝟸𝟻 𝚁𝙾𝚆𝚂 :"):
         st.write(data.head(25))
-    data["MSRP"] = data["MSRP"].replace("[$,]", "", regex=True).astype(int)
+    
     if st.checkbox("STASTICAL OBSERVATIONS ON DATASSET :"):
         st.write(data.describe())
-
+    data["MSRP"] = data["MSRP"].replace("[$,]", "", regex=True).astype(int)
     if st.checkbox(" 𝚂𝙷𝙾𝚆 𝚂𝙷𝙰𝙿𝙴 AND DIMENSIONS OF DATAFRAME :"):
         st.write("SHAPE :",data.shape)
         st.write(" NO OF DIMENSIONS :",data.ndim)
@@ -73,7 +73,7 @@ if uploaded_file is not None:
         if st.checkbox("PRICING DETAILS OF SELECTED MODELS :"):
             st.write("choose model and type from the below list :")
             st.write(data['Type'].unique())
-            data["MSRP"] = data["MSRP"].replace("[$,]", "", regex=True).astype(int)
+            
             y=st.text_input("PLEASE ENTER MODEL TYPE:",key=" MODEL_INPUT")
             st.write("MINIMUM VALUE IN THE SELECTED TYPE :")
             data1 = data.where(data['Type']==y)['MSRP']
@@ -148,6 +148,7 @@ if uploaded_file is not None:
             ax.legend()
             st.pyplot(fig)
     if st.checkbox("CHECK CARS ON YOUR PERSONLIZATION"):
+        
         col1, col2,col3,col4 = st.columns(4)
         slider1=data['Make'].unique()
         slider2=data['Type'].unique()
